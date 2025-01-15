@@ -3,17 +3,19 @@
     
     <script>
         minPlank = 30;
-        maxPlank = 60
+        maxPlank = 60;
         const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
         
         //necessary to guarantee user interaction in order to pla
         alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
         
         let length = Math.random()*(maxPlank-minPlank)+minPlank;
-        setTimeout(() => {
-            //doneSound.play();
-            document.getElementById('doneSound').play(); //https://stackoverflow.com/questions/21815323/have-sound-play-when-alert-is-triggered
+        doneSound.onended = function () {
             alert("Your "+Math.round(length)+" second plank is done!");
+        }
+        setTimeout(() => {
+            doneSound.play();
+            //document.getElementById('doneSound').play(); //https://stackoverflow.com/questions/21815323/have-sound-play-when-alert-is-triggered
         },length*1000);
     </script>
 </body>
