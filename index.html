@@ -1,21 +1,32 @@
 <body>
     <audio id="doneSound" src="zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3" preload="auto"></audio>
     
+    <button id="startButton" onclick="startTimer()">START</button>
+    <h1 id="message"></h1>
+    
     <script>
-        minPlank = 30;
-        maxPlank = 60;
+        minPlank = 3;
+        maxPlank = 6;
         const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
         
         //necessary to guarantee user interaction in order to pla
-        alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
+        //alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
         
         let length = Math.random()*(maxPlank-minPlank)+minPlank;
         doneSound.onended = function () {
             alert("Your "+Math.round(length)+" second plank is done!");
+            document.getElementById('message').innerHTML = "";
         }
-        setTimeout(() => {
-            doneSound.play();
-            //document.getElementById('doneSound').play(); //https://stackoverflow.com/questions/21815323/have-sound-play-when-alert-is-triggered
-        },length*1000);
+        function startTimer() {
+            setTimeout(() => {
+                doneSound.play();
+                //alert("Done. Reload page to restart.");
+                //document.getElementById('doneSound').play(); //https://stackoverflow.com/questions/21815323/have-sound-play-when-alert-is-triggered
+                
+                document.getElementById('message').innerHTML = "Done";
+            },length*1000);
+            
+            document.getElementById('message').innerHTML = "Timer started";
+        }
     </script>
 </body>
