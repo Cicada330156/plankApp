@@ -1,0 +1,16 @@
+<body>
+    <script>
+        minPlank = 30;
+        maxPlank = 60
+        const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
+        
+        //necessary to guarantee user interaction in order to pla
+        alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
+        
+        let length = Math.random()*(maxPlank-minPlank)+minPlank;
+        setTimeout(() => {
+            doneSound.play();
+            alert("Your "+Math.round(length)+" second plank is done!");
+        },length*1000);
+    </script>
+</body>
