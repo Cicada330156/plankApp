@@ -12,12 +12,14 @@
         //necessary to guarantee user interaction in order to pla
         //alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
         
-        let length = Math.random()*(maxPlank-minPlank)+minPlank;
-        doneSound.onended = function () {
-            alert("Your "+Math.round(length)+" second plank is done!");
-            document.getElementById('message').innerHTML = "";
-        }
+        
         function startTimer() {
+            let length = Math.random()*(maxPlank-minPlank)+minPlank;
+            doneSound.onended = function () {
+                alert("Your "+Math.round(length)+" second plank is done!");
+                document.getElementById('message').innerHTML = "";
+            }
+        
             setTimeout(() => {
                 doneSound.play();
                 //alert("Done. Reload page to restart.");
