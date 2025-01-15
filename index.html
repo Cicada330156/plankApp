@@ -1,4 +1,6 @@
 <body>
+    <audio id="doneSound" src="zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3" preload="auto"></audio>
+    
     <script>
         minPlank = 30;
         maxPlank = 60
@@ -9,7 +11,8 @@
         
         let length = Math.random()*(maxPlank-minPlank)+minPlank;
         setTimeout(() => {
-            doneSound.play();
+            //doneSound.play();
+            document.getElementById('doneSound').play(); //https://stackoverflow.com/questions/21815323/have-sound-play-when-alert-is-triggered
             alert("Your "+Math.round(length)+" second plank is done!");
         },length*1000);
     </script>
