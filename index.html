@@ -1,6 +1,4 @@
 <body>
-    <audio id="doneSound" src="zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3" preload="auto"></audio>
-    
     <button id="startButton" onclick="
         this.disabled = true; // Disable the button
         
@@ -36,7 +34,7 @@
         minPlank = 30;
         maxPlank = 60;
         currentLength = 0;
-        const doneSound = document.getElementById('doneSound');
+        const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
         doneSound.onended = function () {
             alert('Your '+Math.round(currentLength)+' second plank is done!');
             document.getElementById('message').innerHTML = '';
