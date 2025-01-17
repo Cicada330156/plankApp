@@ -2,7 +2,6 @@
     <audio id="doneSound" src="zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3" preload="auto"></audio>
     
     <button id="startButton" onclick="
-        //GPT implementation of timer flag
         this.disabled = true; // Disable the button
         
         
@@ -10,13 +9,6 @@
         if(DEBUG){console.log('Length: ' + length);}
         if(DEBUG){console.log('min: ' + minPlank + ', max:' + maxPlank);}
         if(DEBUG){console.log('min: ' + typeof(minPlank) + ', max:' + typeof(maxPlank));}
-        doneSound.onended = function () {
-            alert('Your '+Math.round(length)+' second plank is done!');
-            document.getElementById('message').innerHTML = '';
-            
-            //GPT implementation of timer flag
-            document.getElementById('startButton').disabled = false; // Re-enable the button
-        }
     
         setTimeout(() => {
             doneSound.play();
@@ -44,6 +36,12 @@
         minPlank = 30;
         maxPlank = 60;
         const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
+        doneSound.onended = function () {
+            alert('Your '+Math.round(length)+' second plank is done!');
+            document.getElementById('message').innerHTML = '';
+            
+            document.getElementById('startButton').disabled = false; // Re-enable the button
+        }
         
         //necessary to guarantee user interaction in order to pla
         //alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
