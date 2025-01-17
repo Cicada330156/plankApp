@@ -1,6 +1,14 @@
 <body>
     <audio id="doneSound" src="zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3" preload="auto"></audio>
     
+    <form id="lengthSettings">
+        Minimum Length (default 30): <input type="number" name="minVal" value="30"><br>
+        Maximum length (default 60): <input type="number" name="maxVal" value="60"><br>
+    </form>
+    <button onclick="updatePlankInterval()">Update</button>
+    <h1 id="updateStatus"></h1>
+    
+    <br>
     <button id="startButton" onclick="
         let length = Math.random()*(maxPlank-minPlank)+minPlank;
         doneSound.onended = function () {
@@ -44,6 +52,19 @@
             },length*1000);
             
             document.getElementById('message').innerHTML = "Timer started";
+        }
+        
+        function updatePlankInterval() {
+            data = document.getElementById("lengthSettings");
+            if(data.minVal.value <= 0 || data.maxVal.value <= 0) {
+                ///@TODO Output that it's no bueno
+            }else if(data.minVal.value > data.maxVal.value){
+                ///@TODO Output that it's no bueno
+            }else{
+                minPlank = data.minVal.value;
+                maxPlank = data.maxVal.value;
+                //@TODO output success msg
+            }
         }
     </script>
 </body>
