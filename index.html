@@ -2,7 +2,10 @@
     <audio id="doneSound" src="zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3" preload="auto"></audio>
     
     <button id="startButton" onclick="
-        let length = Math.random()*(maxPlank-minPlank)+minPlank;
+        let length = (Math.random()*(maxPlank-minPlank))+minPlank;
+        if(DEBUG){console.log('Length: ' + length);}
+        if(DEBUG){console.log('min: ' + minPlank + ', max:' + maxPlank);}
+        if(DEBUG){console.log('min: ' + typeof(minPlank) + ', max:' + typeof(maxPlank));}
         doneSound.onended = function () {
             alert('Your '+Math.round(length)+' second plank is done!');
             document.getElementById('message').innerHTML = '';
@@ -30,6 +33,7 @@
     
     
     <script>
+        DEBUG = false;
         minPlank = 30;
         maxPlank = 60;
         const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
@@ -59,17 +63,24 @@
         function updatePlankInterval() {
             data = document.getElementById("lengthSettings");
             if(data.minVal.value <= 0 || data.maxVal.value <= 0) {
-                ///@TODO Output that it's no bueno
+                updateMessageWithTimeout("updateStatus", 3000, "Value cannot be less than 0")
             }else if(data.minVal.value > data.maxVal.value){
-                ///@TODO Output that it's no bueno
+                updateMessageWithTimeout("updateStatus", 3000, "Minimum value must be less than maximum value")
             }else{
-                minPlank = data.minVal.value;
-                maxPlank = data.maxVal.value;
-                document.getElementById('updateStatus').innerHTML = "New min: " + minPlank + ", new max: " + maxPlank;
-                setTimeout(() => {
-                    document.getElementById('updateStatus').innerHTML = "";
-                }, 3000);
+                minPlank = parseInt(data.minVal.value);
+                maxPlank = parseInt(data.maxVal.value);
+                updateMessageWithTimeout("updateStatus", 3000, "New min: " + minPlank + ", new max: " + maxPlank)
             }
+        }
+        
+        //updates the message box, then returns it to its previous message. Has no error correction if it runs twice.
+        //@TODO add error correction - perhaps a global hashmap to store the go-to previous value
+        function updateMessageWithTimeout(messageBoxId, timeout, message) {
+            priorMessage = document.getElementById(messageBoxId).innerHTML
+            document.getElementById(messageBoxId).innerHTML = message;
+            setTimeout(() => {
+                document.getElementById(messageBoxId).innerHTML = priorMessage;
+            }, timeout);
         }
     </script>
 </body>
