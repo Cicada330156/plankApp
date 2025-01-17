@@ -35,7 +35,8 @@
         DEBUG = false;
         minPlank = 30;
         maxPlank = 60;
-        const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
+        //const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
+        const doneSound = document.getElementById('doneSound');
         doneSound.onended = function () {
             alert('Your '+Math.round(length)+' second plank is done!');
             document.getElementById('message').innerHTML = '';
