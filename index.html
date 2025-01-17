@@ -5,8 +5,8 @@
         this.disabled = true; // Disable the button
         
         
-        let length = (Math.random()*(maxPlank-minPlank))+minPlank;
-        if(DEBUG){console.log('Length: ' + length);}
+        currentLength = (Math.random()*(maxPlank-minPlank))+minPlank;
+        if(DEBUG){console.log('Length: ' + currentLength);}
         if(DEBUG){console.log('min: ' + minPlank + ', max:' + maxPlank);}
         if(DEBUG){console.log('min: ' + typeof(minPlank) + ', max:' + typeof(maxPlank));}
     
@@ -14,7 +14,7 @@
             doneSound.play();
             
             document.getElementById('message').innerHTML = 'Done';
-        },length*1000);
+        },currentLength*1000);
         
         document.getElementById('message').innerHTML = 'Timer started';
     ">START</button>
@@ -35,10 +35,10 @@
         DEBUG = false;
         minPlank = 30;
         maxPlank = 60;
-        //const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
+        currentLength = 0;
         const doneSound = document.getElementById('doneSound');
         doneSound.onended = function () {
-            alert('Your '+Math.round(length)+' second plank is done!');
+            alert('Your '+Math.round(currentLength)+' second plank is done!');
             document.getElementById('message').innerHTML = '';
             
             document.getElementById('startButton').disabled = false; // Re-enable the button
