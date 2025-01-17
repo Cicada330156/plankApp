@@ -43,28 +43,6 @@
             document.getElementById('startButton').disabled = false; // Re-enable the button
         }
         
-        //necessary to guarantee user interaction in order to pla
-        //alert("Start timer for between "+minPlank+" and "+maxPlank+" seconds?");
-        
-        
-        function startTimer() {
-            let length = Math.random()*(maxPlank-minPlank)+minPlank;
-            doneSound.onended = function () {
-                alert("Your "+Math.round(length)+" second plank is done!");
-                document.getElementById('message').innerHTML = "";
-            }
-        
-            setTimeout(() => {
-                doneSound.play();
-                //alert("Done. Reload page to restart.");
-                //document.getElementById('doneSound').play(); //https://stackoverflow.com/questions/21815323/have-sound-play-when-alert-is-triggered
-                
-                document.getElementById('message').innerHTML = "Done";
-            },length*1000);
-            
-            document.getElementById('message').innerHTML = "Timer started";
-        }
-        
         function updatePlankInterval() {
             data = document.getElementById("lengthSettings");
             if(data.minVal.value <= 0 || data.maxVal.value <= 0) {
