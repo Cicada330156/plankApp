@@ -3,8 +3,6 @@
     
     <button id="startButton" onclick="
         //GPT implementation of timer flag
-        if (timerRunning) return; // Prevent multiple clicks while the timer is running
-        timerRunning = true; // Set the flag to indicate the timer is running
         this.disabled = true; // Disable the button
         
         
@@ -17,7 +15,6 @@
             document.getElementById('message').innerHTML = '';
             
             //GPT implementation of timer flag
-            timerRunning = false; // Reset the flag after the timer ends
             document.getElementById('startButton').disabled = false; // Re-enable the button
         }
     
@@ -46,7 +43,6 @@
         DEBUG = false;
         minPlank = 30;
         maxPlank = 60;
-        timerRunning = false;
         const doneSound = new Audio('zapsplat_multimedia_game_tone_bright_positive_gain_award_007_25488.mp3');
         
         //necessary to guarantee user interaction in order to pla
